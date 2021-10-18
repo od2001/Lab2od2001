@@ -1,9 +1,13 @@
 function Bear() {
-  this.dBear = 100;
+  this.dBear = document.getElementById("speedBear").value;
   this.htmlElement = document.getElementById("bear");
   this.id = this.htmlElement.id;
   this.x = this.htmlElement.offsetLeft;
   this.y = this.htmlElement.offsetTop;
+  this.setSpeed = function () {
+    Bear.dBear = document.getElementById("speedBear").value;
+    document.getElementById("h1").style.backgroundColor = "green";
+  };
   this.move = function (xDir, yDir) {
     this.x += this.dBear * xDir;
     this.y += this.dBear * yDir;
@@ -14,16 +18,16 @@ function Bear() {
     this.htmlElement.style.top = this.y + "px";
     this.htmlElement.style.display = "block";
   };
-  this.setSpeed = function () {
-    this.dBear = document.getElementById("speedBear");
-  };
 }
 function start() {
   //create bear
   bear = new Bear();
-  document.getElementById("speedBear").onchange = this.setSpeed();
   // Add an event listener to the keypress event.
   document.addEventListener("keydown", moveBear, false);
+
+  document.getElementById("speedBear").onchange = function () {
+    Bear.setSpeed;
+  };
   //create new array for bees
   bees = new Array();
   //create bees
@@ -193,14 +197,11 @@ function isHit(defender, offender) {
     lastStingTime = newStingTime;
     let longestDuration = Number(duration.innerHTML);
     if (longestDuration === 0) {
-    longestDuration = thisDuration;
+      longestDuration = thisDuration;
     } else {
-    if (longestDuration < thisDuration) longestDuration = thisDuration;
+      if (longestDuration < thisDuration) longestDuration = thisDuration;
     }
     document.getElementById("duration").innerHTML = longestDuration;
- }
-}
-
   }
 }
 
