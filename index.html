@@ -14,6 +14,9 @@
     </noscript>
     <script>
       var bear;
+      var bees;
+      //take start time
+      lastStingTime = new Date();
     </script>
   </head>
 
@@ -29,7 +32,10 @@
         You can ajust bees' speed
         <input type="text" id="speedBees" value="50" size="3" /> px/ms <br />
         and the refresh period
-        <input type="text" id="periodTimer" value="10" size="3" /> ms
+        <input type="text" id="periodTimer" value="10" size="3" /> ms as well as
+        the speed of the bear.
+        <input type="number" id="speedBear" value="100" onchange="setSpeed()" />
+        px/ms
       </p>
       <h2>Press left, right, up, down keys to move the bear</h2>
     </div>
