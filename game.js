@@ -4,10 +4,6 @@ function Bear() {
   this.id = this.htmlElement.id;
   this.x = this.htmlElement.offsetLeft;
   this.y = this.htmlElement.offsetTop;
-  this.setSpeed = function () {
-    Bear.dBear = document.getElementById("speedBear").value;
-    document.getElementById("h1").style.backgroundColor = "green";
-  };
   this.move = function (xDir, yDir) {
     this.x += this.dBear * xDir;
     this.y += this.dBear * yDir;
@@ -19,15 +15,15 @@ function Bear() {
     this.htmlElement.style.display = "block";
   };
 }
+function setSpeed() {
+  bear.dBear = document.getElementById("speedBear").value;
+}
+
 function start() {
   //create bear
   bear = new Bear();
   // Add an event listener to the keypress event.
   document.addEventListener("keydown", moveBear, false);
-
-  document.getElementById("speedBear").onchange = function () {
-    Bear.setSpeed;
-  };
   //create new array for bees
   bees = new Array();
   //create bees
@@ -144,6 +140,10 @@ function createBeeImg(wNum) {
   return img;
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 function makeBees() {
   //get number of bees specified by the user
   let nbBees = document.getElementById("nbBees").value;
@@ -180,9 +180,17 @@ function updateBees() {
   //move the bees randomly
   moveBees();
   //use a fixed update period
-  let period = 10; //modify this to control refresh period
+  let period = document.getElementById(periodTimer).value; //modify this to control refresh period
+  //if
+  if (score<1000){
   //update the timer for the next move
   updateTimer = setTimeout("updateBees()", period);
+  }
+  else{
+  clearTimeout();
+  //Make it say game over
+  }
+  
 }
 
 function isHit(defender, offender) {
@@ -192,6 +200,10 @@ function isHit(defender, offender) {
     score = Number(score) + 1; //increment the score
     hits.innerHTML = score; //display the new score
     //calculate longest duration
+    while(//key hasnt been pressed loop this and then pass a boolean to make sure it dont happen again
+      ){
+      setTimeout=1000;
+    }
     let newStingTime = new Date();
     let thisDuration = newStingTime - lastStingTime;
     lastStingTime = newStingTime;
