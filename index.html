@@ -23,14 +23,19 @@
   <body onload="start();">
     <div id="title">
       <h1>Help the bear escape the bees !</h1>
+      <button onclick="restart()">Restart</button>
       <p>
         Bear tries to avoid being stung by
         <input type="number" id="nbBees" value="1" /> bees by running and
-        jumping. The objective is to have as less stings as possible!
+        jumping. The objective is to have as less stings as possible!<button
+          onclick="makeBees()"
+        >
+          Add Bee
+        </button>
       </p>
       <p>
         You can ajust bees' speed
-        <input type="number" id="speedBees" value="100" /> px/ms
+        <input type="number" id="speedBees" value="50" /> px/ms
         <br />
         and the refresh period
         <input type="number" id="periodTimer" value="10" />

@@ -173,14 +173,11 @@ function updateBees() {
       period = document.getElementById("periodTimer").value;
     });
 
-  //if
-  //if (score < 1000) {
-  //update the timer for the next move
   updateTimer = setTimeout("updateBees()", period);
-  //} else {
-  //clearTimeout();
-  //Make it say game over
-  //}
+
+  if (score > 1000) {
+    clearTimeout();
+  }
 }
 
 function isHit(defender, offender) {
@@ -193,11 +190,13 @@ function isHit(defender, offender) {
     let newStingTime = new Date();
     let thisDuration = newStingTime - lastStingTime;
     lastStingTime = newStingTime;
-    let longestDuration = Number(duration.innerHTML);
+    let longestDuration = Number(document.getElementById("duration").value);
     if (longestDuration === 0) {
       longestDuration = thisDuration;
     } else {
-      if (longestDuration < thisDuration) longestDuration = thisDuration;
+      if (longestDuration < thisDuration) {
+        longestDuration = thisDuration;
+      }
     }
     document.getElementById("duration").innerHTML = longestDuration;
   }
@@ -227,6 +226,7 @@ function overlap(element1, element2) {
 }
 
 function start() {
+  restart();
   //create bear
   bear = new Bear();
   // Add an event listener to the keypress event.
@@ -240,4 +240,13 @@ function start() {
   makeBees();
 
   updateBees();
+}
+
+function restart() {
+  score = 0;
+  document.getElementById("duration").value = 0;
+  document.addEventListener("keydown", function () {
+    lastStingTime = new Date();
+  });
+  bee = 0;
 }
