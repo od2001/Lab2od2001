@@ -26,16 +26,17 @@
       <h1>Help the bear escape the bees !</h1>
       <p>
         Bear tries to avoid being stung by
-        <input type="text" id="nbBees" value="1" size="3" /> bees by running and
+        <input type="number" id="nbBees" value="1" /> bees by running and
         jumping. The objective is to have as less stings as possible!
       </p>
       <p>
         You can ajust bees' speed
-        <input type="number" id="speedBees" value="50" size="3" /> px/ms <br />
+        <input type="number" id="speedBees" value="100" /> px/ms
+        <br />
         and the refresh period
-        <input type="number" id="periodTimer" value="10" size="3" onchange="" />
+        <input type="number" id="periodTimer" value="10" />
         ms as well as the speed of the bear.
-        <input type="number" id="speedBear" value="10" onchange="setBSpeed()" />
+        <input type="number" id="speedBear" value="50" onchange="setBSpeed()" />
         px/ms
       </p>
       <h2>Press left, right, up, down keys to move the bear</h2>

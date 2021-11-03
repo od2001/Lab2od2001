@@ -12,6 +12,7 @@ function Bear() {
   };
 
   this.display = function () {
+    this.fitBounds();
     this.htmlElement.style.left = this.x + "px";
     this.htmlElement.style.top = this.y + "px";
     this.htmlElement.style.display = "block";
@@ -33,19 +34,6 @@ function Bear() {
 }
 function setBSpeed() {
   bear.dBear = document.getElementById("speedBear").value;
-}
-
-function start() {
-  //create bear
-  bear = new Bear();
-  // Add an event listener to the keypress event.
-  document.addEventListener("keydown", moveBear, false);
-  //create new array for bees
-  bees = new Array();
-  //create bees
-  makeBees();
-
-  updateBees();
 }
 
 // Handle keyboad events
@@ -177,7 +165,14 @@ function updateBees() {
   //move the bees randomly
   moveBees();
   //use a fixed update period
-  let period = setPeriod(); //modify this to control refresh period
+  let period = document.getElementById("periodTimer").value; //modify this to control refresh period
+
+  document
+    .getElementById("periodTimer")
+    .addEventListener("onchange", function () {
+      period = document.getElementById("periodTimer").value;
+    });
+
   //if
   if (score < 1000) {
     //update the timer for the next move
@@ -188,10 +183,6 @@ function updateBees() {
   }
 }
 
-function setPeriod() {
-  return document.getElementById("periodTimer").value;
-}
-
 function isHit(defender, offender) {
   if (overlap(defender, offender)) {
     //check if the two image overlap
@@ -199,18 +190,6 @@ function isHit(defender, offender) {
     score = Number(score) + 1; //increment the score
     hits.innerHTML = score; //display the new score
     //calculate longest duration
-    let newStingTime = new Date();
-    let thisDuration = newStingTime - lastStingTime;
-    lastStingTime = newStingTime;
-    let longestDuration = Number(duration.innerHTML);
-    if (longestDuration === 0) {
-      longestDuration = thisDuration;
-    } else {
-      if (longestDuration < thisDuration) {
-        longestDuration = thisDuration;
-      }
-    }
-    document.getElementById("duration").innerHTML = longestDuration;
   }
 }
 
@@ -235,4 +214,17 @@ function overlap(element1, element2) {
     return false;
   }
   return true;
+}
+
+function start() {
+  //create bear
+  bear = new Bear();
+  // Add an event listener to the keypress event.
+  document.addEventListener("keydown", moveBear, false);
+  //create new array for bees
+  bees = new Array();
+  //create bees
+  makeBees();
+
+  updateBees();
 }
