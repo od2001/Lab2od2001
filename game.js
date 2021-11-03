@@ -185,7 +185,6 @@ function updateBees() {
   } else {
     clearTimeout();
     //Make it say game over
-    alert("Game Over");
   }
 }
 
