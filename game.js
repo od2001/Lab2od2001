@@ -174,13 +174,13 @@ function updateBees() {
     });
 
   //if
-  if (score < 1000) {
-    //update the timer for the next move
-    updateTimer = setTimeout("updateBees()", period);
-  } else {
-    clearTimeout();
-    //Make it say game over
-  }
+  //if (score < 1000) {
+  //update the timer for the next move
+  updateTimer = setTimeout("updateBees()", period);
+  //} else {
+  //clearTimeout();
+  //Make it say game over
+  //}
 }
 
 function isHit(defender, offender) {
