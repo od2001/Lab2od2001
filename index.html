@@ -23,13 +23,11 @@
   <body onload="start();">
     <div id="title">
       <h1>Help the bear escape the bees !</h1>
-      <button onclick="restart()">Restart</button>
       <p>
         Bear tries to avoid being stung by
-        <input type="number" id="nbBees" value="1" /> bees by running and
-        jumping. The objective is to have as less stings as possible!<button
-          onclick="makeBees()"
-        >
+        <input type="number" id="nbBees" value="1" onchange="makeBees()" /> bees
+        by running and jumping. The objective is to have as less stings as
+        possible!<button onclick="makeBees()">
           Add Bee
         </button>
       </p>

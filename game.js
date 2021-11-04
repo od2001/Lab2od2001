@@ -173,10 +173,11 @@ function updateBees() {
       period = document.getElementById("periodTimer").value;
     });
 
-  updateTimer = setTimeout("updateBees()", period);
-
-  if (score > 1000) {
+  if (hits.innerHTML > 1000) {
     clearTimeout();
+    alert("Game Over!");
+  } else {
+    updateTimer = setTimeout("updateBees()", period);
   }
 }
 
@@ -226,13 +227,17 @@ function overlap(element1, element2) {
 }
 
 function start() {
-  restart();
+  document.getElementById("duration").value = 0;
   //create bear
   bear = new Bear();
   // Add an event listener to the keypress event.
   document.addEventListener("keydown", moveBear, false);
+  let firstmove = false;
   document.addEventListener("keydown", function () {
-    lastStingTime = new Date();
+    if (firstmove == false) {
+      lastStingTime = new Date();
+      firstmove = true;
+    }
   });
   //create new array for bees
   bees = new Array();
@@ -240,13 +245,4 @@ function start() {
   makeBees();
 
   updateBees();
-}
-
-function restart() {
-  score = 0;
-  document.getElementById("duration").value = 0;
-  document.addEventListener("keydown", function () {
-    lastStingTime = new Date();
-  });
-  bee = 0;
 }
