@@ -188,16 +188,15 @@ function isHit(defender, offender) {
     score = Number(score) + 1; //increment the score
     hits.innerHTML = score; //display the new score
     //calculate longest duration
+
     let newStingTime = new Date();
     let thisDuration = newStingTime - lastStingTime;
     lastStingTime = newStingTime;
-    let longestDuration = Number(document.getElementById("duration").value);
+    let longestDuration = Number(duration.innerHTML);
     if (longestDuration === 0) {
       longestDuration = thisDuration;
     } else {
-      if (longestDuration < thisDuration) {
-        longestDuration = thisDuration;
-      }
+      if (longestDuration < thisDuration) longestDuration = thisDuration;
     }
     document.getElementById("duration").innerHTML = longestDuration;
   }
